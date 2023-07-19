@@ -105,7 +105,7 @@ void print_help()
 bool proc_argv(int argc, char** argv, std::string& adb, std::string& adb_address, std::vector<std::string>& tasks,
                MaaAdbControllerType& ctrl_type)
 {
-    int touch = 1;
+    int touch = 1;  
     int key = 1;
     int screencap = 3;
 
@@ -164,6 +164,9 @@ bool proc_argv(int argc, char** argv, std::string& adb, std::string& adb_address
                 break;
             case 3:
                 tasks.emplace_back("Awards");
+                break;
+            case 4:
+                tasks.emplace_back("LimbusDaily");
                 break;
             default:
                 std::cout << "Unknown task: " << task_id << std::endl;

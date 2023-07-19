@@ -1,0 +1,98 @@
+{
+    "Sub_Limbus_Startup": 
+    {
+        "is_sub": true,
+        "next": [
+            "Limbus_Home",
+            "Limbus_HomeBtn",
+            "Limbus_IntroScr",
+            "Sub_Confirm",
+            "Sub_BattleGiveUp",
+            "Sub_BattleSetting",
+            "Sub_Limbus_BtnBack"
+        ],
+        "timeout": 15000,
+        "timeout_next": [
+            "Sub_Start1999"
+        ]
+    },
+    "Limbus_Home":
+    {
+        "recognition": "TemplateMatch",
+        "template": "limbus_template/Startup/MainSc.png",
+        "roi": [
+            596,571,154,129
+        ]
+    },
+    "Limbus_IntroScr":
+    {
+        "recognition": "TemplateMatch",
+        "template": "limbus_template/Startup/StartGame.png",
+        "roi": [
+            388,433,501,136
+        ],
+        "action": "Click",
+        "next": [
+            "Limbus_Home"
+        ]
+    },
+    "Sub_Limbus_BtnBack":
+    {
+        "pre_wait_freezes": 500,
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": [
+            "limbus_template/Startup/BtnBack.png"
+        ],
+        "roi": [
+            11,0,171,146
+        ],
+        "action": "Click"
+    },
+    "Limbus_HomeBtn":
+    {
+        "pre_wait_freezes": 500,
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": [
+            "limbus_template/Startup/BtnHome.png"
+        ],
+        "roi": [
+            583,564,168,133
+        ],
+        "action": "Click"
+    },
+    "Sub_Confirm":
+    {
+        "is_sub": true,
+        "pre_wait_freezes": 500,
+        "recognition": "TemplateMatch",
+        "template": "limbus_template/daily/Confirm.png",
+        "roi": [
+            1015,511,265,150
+        ],
+        "action": "Click"
+    },
+    "Sub_BattleSetting":
+    {
+        "is_sub": true,
+        "pre_wait_freezes": 500,
+        "recognition": "TemplateMatch",
+        "template": "limbus_template/Startup/BattleSetting.png",
+        "roi": [
+            1162,0,118,139
+        ],
+        "action": "Click"
+    },
+    "Sub_BattleGiveUp":
+    {
+        "is_sub": true,
+        "pre_wait_freezes": 500,
+        "recognition": "TemplateMatch",
+        "template": "limbus_template/Startup/GiveUp.png",
+        "roi": [
+            453,327,372,136
+        ],
+        "action": "Click"
+    }
+}

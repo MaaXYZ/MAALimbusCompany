@@ -1,0 +1,170 @@
+{
+    "ExpLuxcavation":{
+        "pre_wait_freezes": 1500,
+        "next": [
+            "LuxcavationEnter",
+            "Sub_LuxcavationBtn",
+            "Sub_DriveView",
+            "Sub_Limbus_Startup"
+        ]
+    },
+    "ThreadLuxcavation":{
+        "next": [
+            "EndBattleConfirm",
+            "Sub_SkipConfirmBtn",
+            "Sub_SkipBtn",
+            "Sub_LvLSelSkipBtn",
+            "Sub_ThreadLuxcavationBtn",
+            "Sub_LuxcavationBtn",
+            "Sub_DriveView",
+            "Sub_Limbus_Startup"
+        ]
+    },
+    "Sub_DriveView": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "limbus_template/daily/Drive.png",
+        "roi": [
+            798,567,157,131
+        ],
+        "action": "Click"
+    },
+    "Sub_LuxcavationBtn": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "limbus_template/daily/LuxcavationBtn.png",
+        "roi": [
+            321,65,252,169
+        ],
+        "action": "Click"
+    },
+    "Sub_ThreadLuxcavationBtn": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "limbus_template/daily/Thread.png",
+        "roi": [
+            31,258,228,146
+        ],
+        "action": "Click"
+    },
+    "Sub_SkipBtn": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "limbus_template/daily/Skip.png",
+        "threshold": 0.92,
+        "roi": [
+            255,445,228,123
+        ],
+        "action": "Click"
+    },
+    "Sub_SkipConfirmBtn": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "limbus_template/daily/SkipConfirm.png",
+        "threshold": 0.92,
+        "roi": [
+            656,427,134,122
+        ],
+        "action": "Click"
+    },
+    "Sub_LvLSelSkipBtn": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "limbus_template/daily/LvlSkip.png",
+        "threshold": 0.90,
+        "roi": [
+            434,343,340,168
+        ],
+        "action": "Click"
+    },
+    "SkipBattle": {
+        "recognition": "TemplateMatch",
+        "template": "limbus_template/daily/Enter.png",
+        "roi": [
+            948,416,203,127
+        ],
+        "action": "Click",
+        "next": [
+            "PartySelectBtn"
+        ]
+    },
+    "LuxcavationEnter": {
+        "recognition": "TemplateMatch",
+        "template": "limbus_template/daily/Enter.png",
+        "roi": [
+            948,416,203,127
+        ],
+        "action": "Click",
+        "next": [
+            "PartySelectBtn"
+        ]
+    },
+    "PartySelectBtn": {
+        "recognition": "TemplateMatch",
+        "template": "limbus_template/daily/ToBattle.png",
+        "roi": [
+            1019,509,254,157
+        ],
+        "action": "Click",
+        "next": [
+            "BattleLoop"
+        ]
+    },
+    "BattleLoop": {
+        "next": [
+            "BattleStart",
+            "WinRateAuto",
+            "EndBattleConfirm"
+        ],
+        "timeout": 60000
+    },
+    "WinRateAuto": {
+        "pre_wait_freezes": 1500,
+        "recognition": "TemplateMatch",
+        "template": "limbus_template/daily/WinRate.png",
+        "roi": [
+            [852,482,171,125],
+            [892,482,171,125],
+            [929,480,173,130],
+            [967,481,171,127],
+            [1006,480,171,125],
+            [1046,480,171,125],
+            [1086,480,171,125]
+        ],
+        "action": "Click",
+        "next": [
+            "BattleLoop"
+        ]
+    },
+    "BattleStart":
+    {
+        "pre_wait_freezes": 1500,
+        "recognition": "TemplateMatch",
+        "template": "limbus_template/daily/BStart2.png",
+        "roi": [
+            [775,491,137,131],
+            [815,491,137,131],
+            [855,491,137,131],
+            [895,491,137,131],
+            [935,491,137,131],
+            [975,491,137,131],
+            [1015,491,137,131],
+            [1055,491,137,131]
+        ],
+        "action": "Click",
+        "next": [
+            "BattleLoop"
+        ]
+    },
+    "EndBattleConfirm":
+    {
+        "pre_wait_freezes": 1500,
+        "recognition": "TemplateMatch",
+        "template": "limbus_template/daily/Confirm.png",
+        "roi": [
+            1015,511,265,150
+        ],
+        "action": "Click"
+    }
+
+}
