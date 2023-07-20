@@ -1,0 +1,42 @@
+{
+    "CraftModule":{
+        "pre_wait_freezes": 1500,
+        "next": [
+            "EnoughPt",
+            "Sub_Limbus_Startup"
+        ]
+    },
+    "EnoughPt": {
+        "recognition": "TemplateMatch",
+        "threshold": 0.92,
+        "template": "limbus_template/daily/Energy.png",
+        "roi": [
+            243,608,149,112
+        ],
+        "action": "Click",
+        "next": [
+            "SelectAll",
+            "EnoughPt"
+        ]
+    },
+    "SelectAll": {
+        "recognition": "TemplateMatch",
+        "template": "limbus_template/daily/SelAll.png",
+        "roi": [
+            734,258,146,141
+        ],
+        "action": "Click",
+        "next": [
+            "ConfirmCraft"
+        ]
+    },
+    "ConfirmCraft": {
+        "recognition": "TemplateMatch",
+        "template": "limbus_template/daily/ConfirmCraft.png",
+        "roi": [
+            600,462,188,149
+        ],
+        "action": "Click"
+    }
+
+}

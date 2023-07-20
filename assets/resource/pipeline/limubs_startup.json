@@ -9,7 +9,9 @@
             "Sub_Confirm",
             "Sub_BattleGiveUp",
             "Sub_BattleSetting",
-            "Sub_Limbus_BtnBack"
+            "Sub_Limbus_InitPayFail",
+            "Sub_Limbus_BtnBack",
+            "Sub_CancelCraft"
         ],
         "timeout": 15000,
         "timeout_next": [
@@ -46,6 +48,19 @@
         ],
         "roi": [
             11,0,171,146
+        ],
+        "action": "Click"
+    },
+    "Sub_Limbus_InitPayFail":
+    {
+        "pre_wait_freezes": 500,
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": [
+            "limbus_template/Startup/PayFail.png"
+        ],
+        "roi": [
+            437,424,408,144
         ],
         "action": "Click"
     },
@@ -92,6 +107,17 @@
         "template": "limbus_template/Startup/GiveUp.png",
         "roi": [
             453,327,372,136
+        ],
+        "action": "Click"
+    },
+    "Sub_CancelCraft":
+    {
+        "is_sub": true,
+        "pre_wait_freezes": 500,
+        "recognition": "TemplateMatch",
+        "template": "limbus_template/Startup/GiveUp.png",
+        "roi": [
+            345,450,209,167
         ],
         "action": "Click"
     }
