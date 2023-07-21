@@ -142,7 +142,7 @@ bool proc_argv(int argc, char** argv, std::string& adb, std::string& adb_address
                   << std::endl
                   << MAA_NS::utf8_to_stdout("选择任务，会自动启动游戏及登录，但不会启动模拟器") << std::endl
                   << std::endl
-                  << MAA_NS::utf8_to_stdout("1.收取荒原\n2.每日心相\n3.领取奖励") << std::endl
+                  << MAA_NS::utf8_to_stdout("1.收取荒原\n2.每日心相\n3.领取奖励\n4. 搓饼\n5. 经验本战斗\n6. 纺锤本战斗\n7. 纺锤本跳过") << std::endl
                   << std::endl
                   << MAA_NS::utf8_to_stdout("请输入要执行的任务序号，可自定义顺序，以空格分隔，例如 1 2 3: ")
                   << std::endl;
@@ -166,7 +166,16 @@ bool proc_argv(int argc, char** argv, std::string& adb, std::string& adb_address
                 tasks.emplace_back("Awards");
                 break;
             case 4:
-                tasks.emplace_back("LimbusDaily");
+                tasks.emplace_back("CraftModule");
+                break;
+            case 5:
+                tasks.emplace_back("ExpLuxcavation");
+                break;
+            case 6:
+                tasks.emplace_back("ThreadLuxcavationBattle");
+                break;
+            case 7:
+                tasks.emplace_back("ThreadLuxcavationSkip");
                 break;
             default:
                 std::cout << "Unknown task: " << task_id << std::endl;

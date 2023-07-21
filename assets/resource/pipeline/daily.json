@@ -8,7 +8,18 @@
             "Sub_Limbus_Startup"
         ]
     },
-    "ThreadLuxcavation":{
+    "ThreadLuxcavationBattle":{
+        "next": [
+            "PartySelectBtn",
+            "Sub_LvLSelBattleBtn",
+            "Sub_ThreadBattleBtn",
+            "Sub_ThreadLuxcavationBtn",
+            "Sub_LuxcavationBtn",
+            "Sub_DriveView",
+            "Sub_Limbus_Startup"
+        ]
+    },
+    "ThreadLuxcavationSkip":{
         "next": [
             "EndBattleConfirm",
             "Sub_SkipConfirmBtn",
@@ -57,6 +68,16 @@
         ],
         "action": "Click"
     },
+    "Sub_ThreadBattleBtn": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "limbus_template/daily/ThreadBattle.png",
+        "threshold": 0.92,
+        "roi": [
+            240,405,173,131
+        ],
+        "action": "Click"
+    },
     "Sub_SkipConfirmBtn": {
         "is_sub": true,
         "recognition": "TemplateMatch",
@@ -64,6 +85,16 @@
         "threshold": 0.92,
         "roi": [
             656,427,134,122
+        ],
+        "action": "Click"
+    },
+    "Sub_LvLSelBattleBtn": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "limbus_template/daily/LvlBattle.png",
+        "threshold": 0.90,
+        "roi": [
+            675,321,187,204
         ],
         "action": "Click"
     },
@@ -114,6 +145,9 @@
         "next": [
             "BattleStart",
             "WinRateAuto",
+            "AbnormalEventConfirm",
+            "AbnormalEventSelect",
+            "AbnormalEventSkip",
             "EndBattleConfirm"
         ],
         "timeout": 60000
@@ -151,6 +185,42 @@
             [1015,491,137,131],
             [1055,491,137,131]
         ],
+        "action": "Click",
+        "next": [
+            "BattleLoop"
+        ]
+    },
+    "AbnormalEventConfirm": {
+        "recognition": "TemplateMatch",
+        "green_mask": false,
+        "template": "limbus_template/daily/AbnormalEventConfirm2.png",
+        "roi": [
+            [975,555,305,165],
+            [983,555,297,165]
+        ],
+        "action": "Click",
+        "next": [
+            "BattleLoop"
+        ]
+    },
+    "AbnormalEventSkip": {
+        "recognition": "TemplateMatch",
+        "template": "limbus_template/daily/AbnormalEventSkip.png",
+        "roi": [
+            524,247,155,122
+        ],
+        "action": "Click",
+        "next": [
+            "BattleLoop"
+        ]
+    },
+    "AbnormalEventSelect": {
+        "recognition": "TemplateMatch",
+        "template": "limbus_template/daily/Choice.png",
+        "roi": [
+            622,61,256,185
+        ],
+        "target": [632,116,147,189],
         "action": "Click",
         "next": [
             "BattleLoop"
