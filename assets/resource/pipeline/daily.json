@@ -146,6 +146,7 @@
             "BattleStart",
             "WinRateAuto",
             "AbnormalEventConfirm",
+            "AbnormalSinnerSelect",
             "AbnormalEventSelect",
             "AbnormalEventSkip",
             "EndBattleConfirm"
@@ -221,6 +222,18 @@
             622,61,256,185
         ],
         "target": [632,116,147,189],
+        "action": "Click",
+        "next": [
+            "BattleLoop"
+        ]
+    },
+    "AbnormalSinnerSelect": {
+        "recognition": "TemplateMatch",
+        "template": "limbus_template/daily/VeryHigh.png",
+        "roi": [
+            622,61,256,185
+        ],
+        "target": [65, 636, 36, 34],
         "action": "Click",
         "next": [
             "BattleLoop"

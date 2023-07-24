@@ -13,10 +13,7 @@
             "Sub_Limbus_BtnBack",
             "Sub_CancelCraft"
         ],
-        "timeout": 15000,
-        "timeout_next": [
-            "Sub_Start1999"
-        ]
+        "timeout": 20000
     },
     "Limbus_Home":
     {

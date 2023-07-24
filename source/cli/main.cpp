@@ -58,8 +58,19 @@ int main(int argc, char** argv)
     auto controller_handle =
         MaaAdbControllerCreate(adb.c_str(), adb_address.c_str(), control_type, adb_config.c_str(), nullptr, nullptr);
 
-    MaaBindResource(maa_handle, resource_handle);
-    MaaBindController(maa_handle, controller_handle);
+    auto res_result = MaaBindResource(maa_handle, resource_handle);
+    auto control_result = MaaBindController(maa_handle, controller_handle);
+
+    _CRT_UNUSED(res_result);
+    _CRT_UNUSED(control_result);
+    if (!res_result) {
+        std::cout << "Failed to init Maa res"
+                  << std::endl;
+    }
+    if (!control_result) {
+        std::cout << "Failed to init Maa ctrl" << std::endl;
+    }
+
     int height = 720;
     MaaControllerSetOption(controller_handle, MaaCtrlOption_ScreenshotTargetHeight, reinterpret_cast<void*>(&height),
                            sizeof(int));
@@ -86,6 +97,7 @@ int main(int argc, char** argv)
     }
 
     MaaTaskId task_id = 0;
+    
     for (const auto& task : tasks) {
         task_id = MaaPostTask(maa_handle, task.type.c_str(), task.param.to_string().c_str());
     }
@@ -261,92 +273,97 @@ bool proc_argv(int argc, char** argv, std::string& adb, std::string& adb_address
         ctrl_type = touch << 0 | key << 8 | screencap << 16;
     }
     else {
-        std::cout << std::endl
-                  << std::endl
-                  << MAA_NS::utf8_to_stdout("请输入 adb 路径，例如 C:/adb.exe，不要有中文: ") << std::endl;
-        std::getline(std::cin, adb);
-        std::cout << std::endl
-                  << std::endl
-                  << MAA_NS::utf8_to_stdout("请输入 adb 地址，例如 127.0.0.1:5555：") << std::endl;
-        std::getline(std::cin, adb_address);
-        std::cout << std::endl
-                  << std::endl
-                  << MAA_NS::utf8_to_stdout("选择任务，会自动登录，但不会启动游戏和模拟器") << std::endl
-                  << std::endl
-                  << MAA_NS::utf8_to_stdout("1.收取荒原\n2.每日心相\n3.领取奖励\n4. 搓饼\n5. 经验本战斗\n6. 纺锤本战斗\n7. 纺锤本跳过") << std::endl
-                  << std::endl
-                  << std::endl
-                  << MAA_NS::utf8_to_stdout("请输入要执行的任务序号，可自定义顺序，以空格分隔，例如 1 3 11 2: ")
-                  << std::endl;
-        std::vector<int> task_ids;
-        std::string line;
-        std::getline(std::cin, line);
-        std::istringstream iss(line);
-        int task_id;
-        while (iss >> task_id) {
-            task_ids.emplace_back(task_id);
-        }
+        if (argc >= 3) {
+            adb = argv[1];
+            adb_address = argv[2];
 
-        // tasks.emplace_back(Task { .name = "MyTask0", .type = "Start1999" });
-
-        int index = 1;
-        for (auto id : task_ids) {
-            Task task_obj;
-            task_obj.name = "MyTask" + std::to_string(index++);
-
-            switch (id) {
-            case 1:
-                task_obj.type = "Wilderness";
-                break;
-            case 2:
-                task_obj.type = "Awards";
-                break;
-
-            case 3:
-                task_obj.type = "Psychube";
-                break;
-            case 4:
-                tasks.emplace_back("CraftModule");
-                break;
-            case 5:
-                tasks.emplace_back("ExpLuxcavation");
-                break;
-            case 6:
-                tasks.emplace_back("ThreadLuxcavationBattle");
-                break;
-            case 7:
-                tasks.emplace_back("ThreadLuxcavationSkip");
-                break;
-            default:
-                std::cout << "Unknown task: " << id << std::endl;
-                return false;
+            std::vector<std::string> task_names;
+            for (int i = 3; i < argc; ++i) {
+                task_names.emplace_back(argv[i]);
             }
-            tasks.emplace_back(std::move(task_obj));
+            auto all_tasks = std::move(tasks);
+            tasks.clear();
+            for (auto& task_name : task_names) {
+                tasks.emplace_back(task_name, task_name);
+            }
+        }
+        if (adb.empty()) 
+        {
+
+            std::cout << std::endl
+                      << std::endl
+                      << MAA_NS::utf8_to_stdout("请输入 adb 路径，例如 C:/adb.exe，不要有中文: ") << std::endl;
+            std::getline(std::cin, adb);
+        }
+        if (adb_address.empty()) {
+            std::cout << std::endl
+                      << std::endl
+                      << MAA_NS::utf8_to_stdout("请输入 adb 地址，例如 127.0.0.1:5555：") << std::endl;
+            std::getline(std::cin, adb_address);
+        }
+        if (tasks.empty()) {
+            std::cout << std::endl
+                      << std::endl
+                      << MAA_NS::utf8_to_stdout("选择任务，会自动登录，但不会启动游戏和模拟器") << std::endl
+                      << std::endl
+                      << MAA_NS::utf8_to_stdout(
+                             "1.收取荒原\n2.每日心相\n3.领取奖励\n4. 搓饼\n5. 经验本战斗\n6. 纺锤本战斗\n7. 纺锤本跳过")
+                      << std::endl
+                      << std::endl
+                      << std::endl
+                      << MAA_NS::utf8_to_stdout("请输入要执行的任务序号，可自定义顺序，以空格分隔，例如 1 3 11 2: ")
+                      << std::endl;
+            std::vector<int> task_ids;
+            std::string line;
+            std::getline(std::cin, line);
+            std::istringstream iss(line);
+            int task_id;
+            while (iss >> task_id) {
+                task_ids.emplace_back(task_id);
+            }
+            // tasks.emplace_back(Task { .name = "MyTask0", .type = "Start1999" });
+
+            int index = 1;
+            for (auto id : task_ids) {
+                Task task_obj;
+                task_obj.name = "MyTask" + std::to_string(index++);
+
+                switch (id) {
+                case 1:
+                    task_obj.type = "Wilderness";
+                    break;
+                case 2:
+                    task_obj.type = "Awards";
+                    break;
+
+                case 3:
+                    task_obj.type = "Psychube";
+                    break;
+                case 4:
+                    tasks.emplace_back("CraftModule");
+                    break;
+                case 5:
+                    tasks.emplace_back("ExpLuxcavation");
+                    break;
+                case 6:
+                    tasks.emplace_back("ThreadLuxcavationBattle");
+                    break;
+                case 7:
+                    tasks.emplace_back("ThreadLuxcavationSkip");
+                    break;
+                default:
+                    std::cout << "Unknown task: " << id << std::endl;
+                    return false;
+                }
+                tasks.emplace_back(std::move(task_obj));
+            }
         }
 
         ctrl_type = touch << 0 | key << 8 | screencap << 16;
         save_config(adb, adb_address, tasks, ctrl_type);
     }
 
-    if (argc >= 3) {
-        adb = argv[1];
-        adb_address = argv[2];
 
-        std::vector<std::string> task_names;
-        for (int i = 3; i < argc; ++i) {
-            task_names.emplace_back(argv[i]);
-        }
-        auto all_tasks = std::move(tasks);
-        tasks.clear();
-        for (auto& task_name : task_names) {
-            for (auto& task : all_tasks) {
-                if (task.name == task_name) {
-                    tasks.emplace_back(task);
-                    break;
-                }
-            }
-        }
-    }
 
     return true;
 }

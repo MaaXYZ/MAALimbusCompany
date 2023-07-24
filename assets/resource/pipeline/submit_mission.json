@@ -1,0 +1,45 @@
+{
+    "SubmitMission":{
+        "pre_wait_freezes": 1500,
+        "next": [
+            "Sub_MissionClick",
+            "Sub_MissionNotice",
+            "Sub_MainMenuNotice",
+            "Sub_Limbus_Startup"
+        ]
+    },
+    "Sub_MainMenuNotice": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "threshold": 0.92,
+        "template": "limbus_template/daily/MainMenuNotice.png",
+        "roi": [
+            1139,133,122,105
+        ],
+        "target": [1139,133,122,105],
+        "action": "Click"
+    },
+    "Sub_MissionNotice": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "threshold": 0.92,
+        "template": "limbus_template/daily/MissionNotice.png",
+        "roi": [
+            375,0,122,112
+        ],
+        "target": [274,0,220,123],
+        "action": "Click"
+    },
+    "Sub_MissionClick": {
+        "recognition": "TemplateMatch",
+        "template": "limbus_template/daily/SelAll.png",
+        "roi": [
+            945, 184, 263, 101
+        ],
+        "action": "Click",
+        "next": [
+            "Sub_MissionClick"
+        ]
+    }
+
+}
