@@ -246,7 +246,7 @@ bool proc_argv(int argc, char** argv, std::string& adb, std::string& adb_address
 
     tasks.clear();
 
-    if (auto config_opt = json::open("config.json")) {
+    if (auto config_opt = json::open("config.json"); config_opt && argc < 3) {
         auto& confing = *config_opt;
 
         adb = confing["adb"].as_string();

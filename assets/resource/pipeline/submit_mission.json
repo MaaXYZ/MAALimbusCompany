@@ -11,10 +11,10 @@
     "Sub_MainMenuNotice": {
         "is_sub": true,
         "recognition": "TemplateMatch",
-        "threshold": 0.92,
-        "template": "limbus_template/daily/MainMenuNotice.png",
+        "threshold": 0.8,
+        "template": "limbus_template/daily/MainNotice.png",
         "roi": [
-            1139,133,122,105
+            871, 112, 409, 239
         ],
         "target": [1139,133,122,105],
         "action": "Click"
@@ -22,20 +22,21 @@
     "Sub_MissionNotice": {
         "is_sub": true,
         "recognition": "TemplateMatch",
-        "threshold": 0.92,
-        "template": "limbus_template/daily/MissionNotice.png",
+        "threshold": 0.85,
+        "template": "limbus_template/daily/MissionNoticeFull.png",
         "roi": [
-            375,0,122,112
+            272, 0, 228, 154
         ],
         "target": [274,0,220,123],
         "action": "Click"
     },
     "Sub_MissionClick": {
         "recognition": "TemplateMatch",
-        "template": "limbus_template/daily/SelAll.png",
+        "template": "limbus_template/daily/MissionClickFull.png",
         "roi": [
-            945, 184, 263, 101
+            274, 129, 487, 557
         ],
+        "target_offset": [-150, 20, 0, 0],
         "action": "Click",
         "next": [
             "Sub_MissionClick"

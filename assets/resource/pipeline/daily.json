@@ -231,9 +231,9 @@
         "recognition": "TemplateMatch",
         "template": "limbus_template/daily/VeryHigh.png",
         "roi": [
-            622,61,256,185
+            33, 591, 400, 28
         ],
-        "target": [65, 636, 36, 34],
+        "target_offset": [0, 45, 0, 0],
         "action": "Click",
         "next": [
             "BattleLoop"
