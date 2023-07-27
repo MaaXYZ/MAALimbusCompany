@@ -1,0 +1,20 @@
+name: 'QODANA'
+on:
+  workflow_dispatch:
+  pull_request:
+  push:
+    branches:
+      - main
+      - 'releases/*'
+    paths:
+      - '.github/workflows/qodana.yml'
+      - 'source/*'
+      - 'assets/*'
+jobs:
+  qodana:
+    runs-on: ubuntu-latest
+    steps:
+    - name: 'Qodana Scan'
+      uses: JetBrains/qodana-action@main
+      env:
+        QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
