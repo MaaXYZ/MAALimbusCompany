@@ -1,0 +1,87 @@
+{
+    "Mission_4_5_12":{
+        "pre_wait_freezes": 500,
+        "next": [
+            "EnterStage",
+            "Sub_Sea_12",
+            "Sub_Sea_SelectView",
+            "Sub_Sea_StageSelect",
+            "Sub_Enter_SeaHell",
+            "Sub_Limbus_Startup"
+        ]
+    },
+    "Mission_4_5_11":{
+        "pre_wait_freezes": 500,
+        "next": [
+            "EnterStage",
+            "Sub_Sea_11",
+            "Sub_Sea_SelectView",
+            "Sub_Sea_StageSelect",
+            "Sub_Enter_SeaHell",
+            "Sub_Limbus_Startup"
+        ]
+    },
+    "EnterStage": {
+        "recognition": "TemplateMatch",
+        "template": "limbus_template/SeaHell/EnterStage.png",
+        "roi": [
+            950,491,158,169
+        ],
+        "action": "Click",
+        "next": [
+            "PartySelectBtn"
+        ]
+    },
+    "Sub_Sea_12": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "limbus_template/SeaHell/12.png",
+        "roi": [
+            692,150,305,165
+        ],
+        "action": "Click",
+        "target_offset": [75, 137, -149, -11]
+    },
+    "Sub_Sea_11": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "limbus_template/SeaHell/11.png",
+        "roi": [
+            340,283,302,158
+        ],
+        "action": "Click",
+        "target_offset": [75, 126, -145, -9]
+    },
+    "Sub_Sea_SelectView": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "limbus_template/SeaHell/SelectView.png",
+        "roi": [
+            1131,0,149,153
+        ],
+        "action": "Swipe",
+        "begin":[ 550, 547, 300, 51],
+        "end":[ 150, 547, 300, 51]
+    
+    },
+    "Sub_Sea_StageSelect": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "limbus_template/SeaHell/StageSelect.png",
+        "roi": [
+            1030,283,153,143
+        ],
+        "action": "Click"
+    },
+    "Sub_Enter_SeaHell": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "limbus_template/SeaHell/SeaHell.png",
+        "roi": [
+            920,383,339,160
+        ],
+        "action": "Click",
+        "post_wait_freezes": 5000
+    }
+
+}

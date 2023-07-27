@@ -10,7 +10,8 @@
             "Sub_BattleSetting",
             "Sub_Limbus_InitPayFail",
             "Sub_Limbus_BtnBack",
-            "Sub_CancelCraft"
+            "Sub_CancelCraft",
+            "Limbus_Home"
         ],
         "timeout": 20000
     },

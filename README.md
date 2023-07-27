@@ -9,6 +9,7 @@
 - [x] 自动收菜  
   最基本的了，没啥好说的。目前已支持 自动经验/线本。
   对应的任务是： `ExpLuxcavation` 和 `ThreadLuxcavationSkip` `ThreadLuxcavationBattle`。日常合成模块的任务是 `CraftModule`。
+  对应最新活动的 11 12 关的任务是：`Mission_4_5_11` `Mission_4_5_12`
 - [ ] 自动选人
   。。。
 - [ ] 自动镜牢  
