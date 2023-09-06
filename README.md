@@ -1,4 +1,4 @@
-# MAA1999
+# MAALimbusCompany
 
 基于全新架构的 亿韭韭韭（LimbusCompany） 小助手。图像技术 + 模拟控制，解放双手！  
 由 [MaaFramework](https://github.com/MaaAssistantArknights/MaaFramework) / [MaaCommon](https://github.com/MaaAssistantArknights/MaaCommon) 强力驱动！
@@ -9,11 +9,17 @@
 - [x] 自动收菜  
   最基本的了，没啥好说的。目前已支持 自动经验/线本。
   对应的任务是： `ExpLuxcavation` 和 `ThreadLuxcavationSkip` `ThreadLuxcavationBattle`。日常合成模块的任务是 `CraftModule`。
-  对应最新活动的 11 12 关的任务是：`Mission_4_5_11` `Mission_4_5_12`
+  对应最新活动的 11 12 关的任务是：`Mission_4_5_11` `Mission_4_5_12` （活动已结束，不建议再使用）
 - [ ] 自动选人
   。。。
 - [ ] 自动镜牢  
   镜牢的关卡选择看起来好麻烦，不过战斗的话相信Auto都能解决吧（悲
+
+## TL;DR
+带参数启动可执行文件启动相关任务，如：
+```
+MAA1999_CLI.exe "H:\Program Files\Netease\MuMuPlayer-12.0\shell\.\adb.exe" "127.0.0.1:16640" ThreadLuxcavationBattle ExpLuxcavation CraftModule
+```
 
 ## How to build
 
