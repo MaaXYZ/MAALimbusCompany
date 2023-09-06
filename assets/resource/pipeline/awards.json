@@ -2,6 +2,7 @@
     "Awards": {
         "next": [
             "Sub_MailBadge",
+            "Sub_JukeboxBadge",
             "Sub_DailyBadge",
             "HomeFlag",
             "Sub_ObtainedAwards",
@@ -11,7 +12,7 @@
     "Sub_MailBadge": {
         "is_sub": true,
         "recognition": "TemplateMatch",
-        "template": "template/Awards/MailBadge.png",
+        "template": "Awards/MailBadge.png",
         "threshold": 0.98,
         "roi": [
             47,
@@ -27,7 +28,7 @@
     },
     "CollectMailAwards": {
         "recognition": "TemplateMatch",
-        "template": "template/Awards/CollectMailAwards.png",
+        "template": "Awards/CollectMailAwards.png",
         "roi": [
             109,
             551,
@@ -44,7 +45,7 @@
     "Sub_ObtainedAwards": {
         "is_sub": true,
         "recognition": "TemplateMatch",
-        "template": "template/Awards/ObtainedAwards.png",
+        "template": "Awards/ObtainedAwards.png",
         "roi": [
             524,
             62,
@@ -55,7 +56,7 @@
     },
     "NoMailAwards": {
         "recognition": "TemplateMatch",
-        "template": "template/Awards/NoMailAwards.png",
+        "template": "Awards/NoMailAwards.png",
         "roi": [
             952,
             39,
@@ -71,9 +72,10 @@
     "Sub_DailyBadge": {
         "is_sub": true,
         "recognition": "TemplateMatch",
-        "template": "template/Awards/DailyBadge.png",
+        "template": "Awards/DailyBadge.png",
         "threshold": 0.98,
         "action": "Click",
+        "post_wait_freezes": 1,
         "roi": [
             44,
             194,
@@ -91,8 +93,8 @@
         "is_sub": true,
         "recognition": "TemplateMatch",
         "template": [
-            "template/Awards/CollectDailyAwards.png",
-            "template/Awards/CollectSingleDailyAwards.png"
+            "Awards/CollectDailyAwards.png",
+            "Awards/CollectSingleDailyAwards.png"
         ],
         "action": "Click",
         "post_wait_freezes": 1,
@@ -106,7 +108,7 @@
     "Sub_ObtainedDailyAwards": {
         "is_sub": true,
         "recognition": "TemplateMatch",
-        "template": "template/Awards/ObtainedAwards.png",
+        "template": "Awards/ObtainedAwards.png",
         "roi": [
             524,
             62,
@@ -117,7 +119,7 @@
     },
     "WeeklyAwardsBadge": {
         "recognition": "TemplateMatch",
-        "template": "template/Awards/WeeklyAwardsBadge.png",
+        "template": "Awards/WeeklyAwardsBadge.png",
         "threshold": 0.98,
         "action": "Click",
         "roi": [
@@ -136,12 +138,101 @@
     },
     "DailyAwardsPageFlag": {
         "recognition": "TemplateMatch",
-        "template": "template/Awards/DailyAwardsPageFlag.png",
+        "template": "Awards/DailyAwardsPageFlag.png",
         "roi": [
             458,
             0,
             138,
             136
+        ]
+    },
+    "Sub_JukeboxBadge": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "Awards/JukeboxBadge.png",
+        "roi": [
+            183,
+            0,
+            108,
+            108
+        ],
+        "action": "Click",
+        "post_wait_freezes": 200,
+        "next": [
+            "Sub_CollectJukeboxExp",
+            "Sub_JukeboxAwardsBadge",
+            "Sub_BackButton",
+            "HomeFlag"
+        ]
+    },
+    "Sub_CollectJukeboxExp": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": [
+            "Awards/CollectJukebox.png",
+            "Awards/CollectJukeboxExp_Single.png"
+        ],
+        "roi": [
+            951,
+            208,
+            329,
+            512
+        ],
+        "action": "Click"
+    },
+    "Sub_JukeboxAwardsBadge": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "Awards/JukeboxAwardsBadge.png",
+        "roi": [
+            967,
+            1,
+            110,
+            113
+        ],
+        "action": "Click",
+        "next": [
+            "Sub_CollectJukeboxAwards",
+            "Sub_ObtainedJukeboxAwards",
+            "NoJukeboxAwards"
+        ]
+    },
+    "Sub_CollectJukeboxAwards": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "Awards/CollectJukebox.png",
+        "roi": [
+            1009,
+            594,
+            213,
+            126
+        ],
+        "action": "Click"
+    },
+    "Sub_ObtainedJukeboxAwards": {
+        "is_sub": true,
+        "recognition": "OCR",
+        "text": [
+            "获得",
+            "物品"
+        ],
+        "roi": [
+            534,
+            69,
+            211,
+            132
+        ],
+        "action": "Click"
+    },
+    "NoJukeboxAwards": {
+        "recognition": "TemplateMatch",
+        "template": "Awards/NoJukeboxAwards.png",
+        "threshold": 0.98,
+        "roi": [
+            1012,
+            46,
+            23,
+            20
         ]
     }
 }

@@ -1,4 +1,4 @@
-#include "MaaAPI.h"
+#include "MaaFramework/MaaAPI.h"
 
 #include "Utils/Locale.hpp" // 不应该 include 这鬼玩意，图方便，先凑合用吧
 #include <meojson/json.hpp>
@@ -18,7 +18,7 @@ struct Task
 using TaskList = std::vector<Task>;
 
 void print_help();
-bool proc_argv(int argc, char** argv, std::string& adb, std::string& adb_address, TaskList& tasks,
+bool proc_argv(int argc, char** argv, bool& debug, std::string& adb, std::string& adb_address, TaskList& tasks,
                MaaAdbControllerType& ctrl_type);
 void save_config(const std::string& adb, const std::string& adb_address, const TaskList& tasks,
                  MaaAdbControllerType ctrl_type);
@@ -29,12 +29,13 @@ int main(int argc, char** argv)
 {
     print_help();
 
+    bool debug = false;
     std::string adb = "adb";
     std::string adb_address = "127.0.0.1:5555";
     TaskList tasks;
     MaaAdbControllerType control_type = 0;
 
-    bool proced = proc_argv(argc, argv, adb, adb_address, tasks, control_type);
+    bool proced = proc_argv(argc, argv, debug, adb, adb_address, tasks, control_type);
     if (!proced) {
         std::cout << "Failed to parse argv" << std::endl;
         pause();
@@ -52,6 +53,7 @@ int main(int argc, char** argv)
     std::string adb_config = read_adb_config(cur_dir);
 
     MaaSetGlobalOption(MaaGlobalOption_Logging, (void*)debug_dir.c_str(), debug_dir.size());
+    MaaSetGlobalOption(MaaGlobalOption_DebugMode, (void*)&debug, sizeof(bool));
 
     auto maa_handle = MaaCreate(nullptr, nullptr);
     auto resource_handle = MaaResourceCreate(nullptr, nullptr);
@@ -72,7 +74,7 @@ int main(int argc, char** argv)
     }
 
     int height = 720;
-    MaaControllerSetOption(controller_handle, MaaCtrlOption_ScreenshotTargetHeight, reinterpret_cast<void*>(&height),
+    MaaControllerSetOption(controller_handle, MaaCtrlOption_ScreenshotTargetShortSide, reinterpret_cast<void*>(&height),
                            sizeof(int));
 
     auto resource_id = MaaResourcePostResource(resource_handle, resource_dir.c_str());
@@ -101,7 +103,7 @@ int main(int argc, char** argv)
     for (const auto& task : tasks) {
         task_id = MaaPostTask(maa_handle, task.type.c_str(), task.param.to_string().c_str());
     }
-    MaaTaskWait(maa_handle, task_id);
+    MaaWaitTask(maa_handle, task_id);
 
     destroy();
 
@@ -139,97 +141,105 @@ json::value combat_param(int index)
     auto& times = diff["SetReplaysTimes"]["text"];
 
     switch (index) {
-    case 4:
-        // "4. 3-9 厄险（百灵百验鸟）\n"
+    case 5:
+        // "5. 3-9 厄险（百灵百验鸟）\n"
         chapter = "MainChapter_3";
         stage = "09";
         difficulty = "StageDifficulty_Hard";
         times = "1";
         break;
-    case 5:
-        // "5. 4-20 厄险（双头形骨架）\n"
+    case 6:
+        // "6. 4-20 厄险（双头形骨架）\n"
         chapter = "MainChapter_4";
         stage = "20";
         difficulty = "StageDifficulty_Hard";
         times = "1";
         break;
-    case 6:
-        // "6. 2-3 厄险（祝圣秘银）\n"
+    case 7:
+        // "7. 2-3 厄险（祝圣秘银）\n"
         chapter = "MainChapter_2";
         stage = "03";
         difficulty = "StageDifficulty_Hard";
         times = "1";
         break;
-    case 7:
-        // "7. 3-13 厄险（盐封曼德拉）\n"
+    case 8:
+        // "8. 3-13 厄险（盐封曼德拉）\n"
         chapter = "MainChapter_3";
         stage = "13";
         difficulty = "StageDifficulty_Hard";
         times = "1";
         break;
-    case 8:
-        // "8. 4-10 厄险（啮咬盒）\n"
+    case 9:
+        // "9. 4-10 厄险（啮咬盒）\n"
         chapter = "MainChapter_4";
         stage = "10";
         difficulty = "StageDifficulty_Hard";
         times = "1";
         break;
-    case 9:
-        // "9. 3-11 厄险（金爪灵摆）\n"
+    case 10:
+        // "10. 3-11 厄险（金爪灵摆）\n"
         chapter = "MainChapter_3";
         stage = "11";
         difficulty = "StageDifficulty_Hard";
         times = "1";
         break;
 
-    case 10:
-        // "10. 尘埃运动 06\n"
+    case 11:
+        // "11. 尘埃运动 06\n"
         chapter = "ResourceChapter_LP";
         stage = "06";
         difficulty = "StageDifficulty_None";
         times = "1";
         break;
-    case 11:
-        // "11. 猪鼻美学 06\n"
+    case 12:
+        // "12. 猪鼻美学 06\n"
         chapter = "ResourceChapter_MA";
         stage = "06";
         difficulty = "StageDifficulty_None";
         times = "1";
         break;
-    case 12:
-        // "12. 丰收时令 04\n"
+    case 13:
+        // "13. 丰收时令 04\n"
         chapter = "ResourceChapter_MA";
         stage = "04";
         difficulty = "StageDifficulty_None";
         times = "1";
         break;
 
-    case 13:
-        //"13. 群山之声 06（洞悉 岩）\n"
+    case 14:
+        //"14. 群山之声 06（洞悉 岩）\n"
         chapter = "PromotionChapter_ME";
         stage = "06";
         difficulty = "StageDifficulty_None";
         times = "1";
         break;
-    case 14:
-        //"14. 星陨之所 06（洞悉 星）\n"
+    case 15:
+        //"15. 星陨之所 06（洞悉 星）\n"
         chapter = "PromotionChapter_SL";
         stage = "06";
         difficulty = "StageDifficulty_None";
         times = "1";
         break;
-    case 15:
-        //"15. 深林之形 06（洞悉 林）\n"
+    case 16:
+        //"16. 深林之形 06（洞悉 林）\n"
         chapter = "PromotionChapter_SS";
         stage = "06";
         difficulty = "StageDifficulty_None";
         times = "1";
         break;
-    case 16:
-        //"16. 荒兽之野 06（洞悉 兽）\n"
+    case 17:
+        //"17. 荒兽之野 06（洞悉 兽）\n"
         chapter = "PromotionChapter_BW";
         stage = "06";
         difficulty = "StageDifficulty_None";
+        times = "1";
+        break;
+
+    case 18:
+        //"18. 活动：绿湖噩梦 17 艰难\n"
+        chapter = "ANightmareAtGreenLake";
+        stage = "17";
+        difficulty = "ActivityStageDifficulty";
         times = "1";
         break;
     }
@@ -237,7 +247,29 @@ json::value combat_param(int index)
     return param;
 }
 
-bool proc_argv(int argc, char** argv, std::string& adb, std::string& adb_address, TaskList& tasks,
+json::value startup_param(int index)
+{
+    json::value param;
+    auto& diff = param["diff_task"];
+
+    auto& package = diff["Sub_Start1999"]["package"];
+
+    switch (index)
+    {
+    case 1:
+        //"1. 官服\n"
+        package = "com.shenlan.m.reverse1999/com.ssgame.mobile.gamesdk.frame.AppStartUpActivity";
+        break;
+    case 2:
+        //"1. B服\n"
+        package = "com.shenlan.m.reverse1999.bilibili/com.ssgame.mobile.gamesdk.frame.AppStartUpActivity";
+        break;
+    }
+
+    return param;
+}
+
+bool proc_argv(int argc, char** argv, bool& debug, std::string& adb, std::string& adb_address, TaskList& tasks,
                MaaAdbControllerType& ctrl_type)
 {
     int touch = 1;  
@@ -249,6 +281,7 @@ bool proc_argv(int argc, char** argv, std::string& adb, std::string& adb_address
     if (auto config_opt = json::open("config.json"); config_opt && argc < 3) {
         auto& confing = *config_opt;
 
+        debug = confing.get("debug", false);
         adb = confing["adb"].as_string();
         adb_address = confing["adb_address"].as_string();
 
@@ -372,6 +405,7 @@ void save_config(const std::string& adb, const std::string& adb_address, const T
                  MaaAdbControllerType ctrl_type)
 {
     json::value config;
+    config["debug"] = false;
     config["adb"] = adb;
     config["adb_Doc"] = "adb.exe 所在路径，相对绝对均可";
     config["adb_address"] = adb_address;
@@ -386,7 +420,7 @@ void save_config(const std::string& adb, const std::string& adb_address, const T
         tasks_array.emplace(std::move(task_obj));
     }
     config["tasks"] = std::move(tasks_array);
-    config["tasks_Doc"] = "要执行的任务 Start1999, Wilderness, Psychube, Awards, Combat";
+    config["tasks_Doc"] = "要执行的任务 StartUp, Wilderness, Psychube, Awards, Combat";
 
     config["touch"] = (ctrl_type & MaaAdbControllerType_Touch_Mask) >> 0;
     config["touch_Doc"] = "点击方式：1: Adb, 2: MiniTouch, 3: MaaTouch";
