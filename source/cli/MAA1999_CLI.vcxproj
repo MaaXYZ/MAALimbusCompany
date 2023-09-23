@@ -172,8 +172,6 @@ xcopy "$(TargetDir)bin\*" "$(TargetDir)" /s /e /y</Command>
       <Command>xcopy "$(ProjectDir)..\..\assets\*" "$(TargetDir)" /s /e /y</Command>
     </PostBuildEvent>
     <PreBuildEvent>
-      <Command>xcopy "$(TargetDir)lib\*" "$(TargetDir)" /s /e /y
-xcopy "$(TargetDir)bin\*" "$(TargetDir)" /s /e /y</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
