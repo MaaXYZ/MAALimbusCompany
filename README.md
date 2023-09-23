@@ -25,12 +25,34 @@ MAA1999_CLI.exe "H:\Program Files\Netease\MuMuPlayer-12.0\shell\.\adb.exe" "127.
 
 **如果你要编译源码才看这节，否则直接 [下载](https://github.com/MaaAssistantArknights/MAA1999/releases) 即可**
 
-_只是一个临时的编译方法，因为新架构中的 [MaaCommon](https://github.com/MaaAssistantArknights/MaaCommon) 还没完成，所以先简单糊一下。欢迎大佬们来带带~_
+1. 下载 MaaFramework 的 [Release 包](https://github.com/MaaAssistantArknights/MaaFramework/releases)，解压到 `deps` 文件夹中
+2. 配置 cmake
 
-1. 更新子模块 `git submodule update --init --recursive`
-2. 下载 MaaFramework 的 [Release 包](https://github.com/MaaAssistantArknights/MaaFramework/releases)，解压到 `source/cli/x64/Release`
-3. 使用 Visual Studio 编译 `source/cli/MAA1999_CLI.sln`
-4. `tools/CropRoi` 是个小工具，可以用来裁剪图片和获取 ROI
+    - Windows  
+
+    ```bash
+    cmake --preset "MSVC 2022"
+    ```
+
+    - Linux / macOS
+
+    ```bash
+    cmake --preset "NinjaMulti"
+    ```
+
+3. 使用 cmake 构建工程  
+
+    ```bash
+    cmake --build build --config Release
+    cmake --install build --prefix install
+    ```
+
+    生成的二进制及相关资源文件在 `install` 目录下
+
+## 开发相关
+
+- `tools/CropRoi` 可以用来裁剪图片和获取 ROI
+- Pipeline 协议请参考 [MaaFramework 的文档](https://github.com/MaaAssistantArknights/MaaFramework/blob/main/docs/zh_cn/3.3-%E4%BB%BB%E5%8A%A1%E6%B5%81%E6%B0%B4%E7%BA%BF%E5%8D%8F%E8%AE%AE.md)
 
 ## Join us
 

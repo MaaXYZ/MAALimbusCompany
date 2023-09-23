@@ -381,6 +381,7 @@
         "action": "Click",
         "next": [
             "SwitchToReplay",
+            "AllIn",
             "OpenReplaysTimes"
         ]
     },
@@ -388,13 +389,22 @@
         "recognition": "TemplateMatch",
         "template": "Combat/SwitchToReplay.png",
         "roi": [
-            781,
-            581,
-            145,
-            139
+            [
+                781,
+                581,
+                145,
+                139
+            ],
+            [
+                548,
+                569,
+                166,
+                151
+            ]
         ],
         "action": "Click",
         "next": [
+            "AllIn",
             "OpenReplaysTimes"
         ]
     },
@@ -497,6 +507,7 @@
         "action": "Click",
         "next": [
             "Victory",
+            "AllIn",
             "HomeFlag",
             "Sub_StartUp"
         ]
