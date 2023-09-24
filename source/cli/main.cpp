@@ -115,9 +115,9 @@ int main(int argc, char** argv)
 void print_help()
 {
     std::cout << utf8_to_crt(
-                     R"(欢迎使用 MAA 1999 CLI, 源码地址：https://github.com/MaaAssistantArknights/MAA1999
+                     R"(欢迎使用 MAA LimbusCompany CLI, 源码地址：https://github.com/hxdnshx/MAALimbusCompany
 
-用法: MAA1999.exe [adb路径] [adb地址] [任务名（有序）]...
+用法: MAALimbus_CLI.exe [adb路径] [adb地址] [任务名（有序）]...
 
 可以修改 config.json 来配置任务
 
@@ -350,25 +350,11 @@ bool proc_argv(int argc, char** argv, bool& debug, std::string& adb, std::string
                   << std::endl
                   << utf8_to_crt("选择任务，会自动登录，但不会启动模拟器") << std::endl
                   << std::endl
-                  << utf8_to_crt("1. 启动游戏\n"
-                                 "2. 收取荒原\n"
-                                 "3. 领取奖励\n"
-                                 "4. 每日心相（意志解析）\n"
-                                 "5. 3-9 厄险（百灵百验鸟）\n"
-                                 "6. 4-20 厄险（双头形骨架）\n"
-                                 "7. 2-3 厄险（祝圣秘银）\n"
-                                 "8. 3-13 厄险（盐封曼德拉）\n"
-                                 "9. 4-10 厄险（啮咬盒）\n"
-                                 "10. 3-11 厄险（金爪灵摆）\n"
-                                 "11. 尘埃运动 06\n"
-                                 "12. 猪鼻美学 06\n"
-                                 "13. 丰收时令 04\n"
-                                 "14. 群山之声 06（洞悉 岩）\n"
-                                 "15. 星陨之所 06（洞悉 星）\n"
-                                 "16. 深林之形 06（洞悉 林）\n"
-                                 "17. 荒兽之野 06（洞悉 兽）\n"
-                                 "18. 活动：绿湖噩梦 17 艰难（活动已结束）\n"
-                                 "19. 活动：行至摩卢旁卡 16 艰难\n")
+                  << utf8_to_crt("1. 经验本（战斗）\n"
+                                 "2. 纺锤本（跳过）\n"
+                                 "3. 纺锤本（战斗）\n"
+                                 "4. 体力兑换成Module\n"
+                                 "5. 提交赛季每日任务\n")
                   << std::endl
                   << std::endl
                   << utf8_to_crt("请输入要执行的任务序号，可自定义顺序，以空格分隔，例如 1 2 4 12 3: ") << std::endl;
@@ -390,44 +376,21 @@ bool proc_argv(int argc, char** argv, bool& debug, std::string& adb, std::string
 
             switch (id) {
             case 1:
-                task_obj.type = "StartUp";
+                task_obj.type = "ExpLuxcavation";
                 break;
             case 2:
-                task_obj.type = "Wilderness";
+                task_obj.type = "ThreadLuxcavationSkip";
                 break;
             case 3:
-                task_obj.type = "Awards";
+                task_obj.type = "ThreadLuxcavationBattle";
                 break;
 
             case 4:
-                task_obj.type = "Psychube";
+                task_obj.type = "CraftModule";
                 break;
 
             case 5:
-            case 6:
-            case 7:
-            case 8:
-            case 9:
-            case 10:
-            case 11:
-            case 12:
-            case 13:
-            case 14:
-            case 15:
-            case 16:
-            case 17:
-                task_obj.type = "Combat";
-                task_obj.param = combat_param(id);
-                break;
-
-            case 18:
-                task_obj.type = "ANightmareAtGreenLake";
-                task_obj.param = combat_param(id);
-                break;
-
-            case 19:
-                task_obj.type = "JourneytoMorPankh";
-                task_obj.param = combat_param(id);
+                task_obj.type = "SubmitMission";
                 break;
 
             default:
