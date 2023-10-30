@@ -61,6 +61,7 @@ int main(int argc, char** argv)
     const auto cur_dir = std::filesystem::path(argv[0]).parent_path();
     std::string debug_dir = (cur_dir / "debug").string();
     std::string resource_dir = (cur_dir / "resource").string();
+    std::string agent_path = (cur_dir / "MaaAgentBinary").string();
     std::string adb_config = read_adb_config(cur_dir);
 
     MaaSetGlobalOption(MaaGlobalOption_Logging, (void*)debug_dir.c_str(), debug_dir.size());
@@ -68,8 +69,8 @@ int main(int argc, char** argv)
 
     auto maa_handle = MaaCreate(nullptr, nullptr);
     auto resource_handle = MaaResourceCreate(nullptr, nullptr);
-    auto controller_handle =
-        MaaAdbControllerCreate(adb.c_str(), adb_address.c_str(), control_type, adb_config.c_str(), nullptr, nullptr);
+    auto controller_handle = MaaAdbControllerCreateV2(adb.c_str(), adb_address.c_str(), control_type,
+                                                      adb_config.c_str(), agent_path.c_str(), nullptr, nullptr);
 
     MaaBindResource(maa_handle, resource_handle);
     MaaBindController(maa_handle, controller_handle);
@@ -127,7 +128,7 @@ void print_help()
 欢迎大佬来给我们搓个 GUI _(:з」∠)_
 
 v0.2.0
-新增了全关卡导航支持，但还不会吃糖。引导只加了几个常用的关卡，有其他需求可以改改 config，复现次数也在 config 里改
+新增了全关卡导航支持。引导只加了几个常用的关卡，有其他需求可以改改 config，复现次数、吃糖 也在 config 里改
 
 )") << std::endl;
 }
@@ -261,6 +262,15 @@ json::value combat_param(int index)
         difficulty = "ActivityStageDifficulty";
         times = "1";
         break;
+
+    case 20:
+        //"20. 活动：洞穴的囚徒 证明启示 05\n"
+        // 选择该关卡的界面UI布局不同于既有的关卡在进入章节后通过底部滑动条选择关卡，部分pipeline没有复用
+        chapter = "dummyThePrisonerintheCave";
+        stage = "dummy证明启示V";
+        difficulty = "dummyStageDifficulty_None";
+        times = "1";
+        break;
     }
 
     return param;
@@ -301,7 +311,7 @@ bool proc_argv(int argc, char** argv, bool& debug, std::string& adb, std::string
         debug = confing.get("debug", false);
         adb = confing["adb"].as_string();
         adb_address = confing["adb_address"].as_string();
-        client_type = confing.get("client", client_type);
+        client_type = confing.get("client_type", client_type);
 
         int index = 1;
         for (auto& task : confing["tasks"].as_array()) {
@@ -375,6 +385,9 @@ bool proc_argv(int argc, char** argv, bool& debug, std::string& adb, std::string
             task_obj.name = "MyTask" + std::to_string(index++);
 
             switch (id) {
+            case 0:
+                task_obj.type = "Close1999";
+                break;
             case 1:
                 task_obj.type = "ExpLuxcavation";
                 break;
@@ -391,6 +404,11 @@ bool proc_argv(int argc, char** argv, bool& debug, std::string& adb, std::string
 
             case 5:
                 task_obj.type = "SubmitMission";
+                break;
+
+            case 20:
+                task_obj.type = "ThePrisonerintheCave";
+                task_obj.param = combat_param(id);
                 break;
 
             default:
@@ -448,7 +466,7 @@ void save_config(const std::string& adb, const std::string& adb_address, int& cl
         tasks_array.emplace(std::move(task_obj));
     }
     config["tasks"] = std::move(tasks_array);
-    config["tasks_Doc"] = "要执行的任务 StartUp, Wilderness, Psychube, Awards, Combat";
+    config["tasks_Doc"] = "要执行的任务 StartUp, Wilderness, Psychube, Awards, Combat, Close1999";
 
     config["touch"] = (ctrl_type & MaaAdbControllerType_Touch_Mask) >> 0;
     config["touch_Doc"] = "点击方式：1: Adb, 2: MiniTouch, 3: MaaTouch";
