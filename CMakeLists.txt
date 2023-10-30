@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.21)
-project(MAA1999)
+project(MAALimbusCompany)
 
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 set(Boost_NO_WARN_NEW_VERSIONS 1)

@@ -96,7 +96,7 @@ jobs:
 
       - uses: actions/upload-artifact@v3
         with:
-          name: MAA1999-win-${{ matrix.arch }}
+          name: MAALimbusCompany-win-${{ matrix.arch }}
           path: "install"
 
   ubuntu:

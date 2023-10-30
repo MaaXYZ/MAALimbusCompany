@@ -344,8 +344,7 @@ bool proc_argv(int argc, char** argv, bool& debug, std::string& adb, std::string
                   << std::endl
                   << utf8_to_crt("选择客户端类型：") << std::endl
                   << std::endl
-                  << utf8_to_crt("1. 官服\n"
-                                 "2. Bilibili服\n")
+                  << utf8_to_crt("1. 官服\n")
                   << std::endl
                   << std::endl
                   << utf8_to_crt("请输入客户端类型序号，例如 1: ") << std::endl;

@@ -3,6 +3,14 @@
 基于全新架构的 亿韭韭韭（LimbusCompany） 小助手。图像技术 + 模拟控制，解放双手！  
 由 [MaaFramework](https://github.com/MaaAssistantArknights/MaaFramework) / [MaaCommon](https://github.com/MaaAssistantArknights/MaaCommon) 强力驱动！
 
+## 与其他项目的区别
+
+由于采用 MAA 框架进行开发，这个自动化工具主要支持的目标为 Android 设备/模拟器，并不支持PC端（Steam）游戏的自动化，如果您需要相关的工具，可以前往下面的项目：
+
+ - https://github.com/HSLix/LixAssistantLimbusCompany
+ - https://github.com/Xie-Tiao/Limbus-Scripts
+ - https://github.com/Janrilw/limbus-company-auto
+
 
 ## 画大饼
 
@@ -56,4 +64,4 @@ MAA1999_CLI.exe "H:\Program Files\Netease\MuMuPlayer-12.0\shell\.\adb.exe" "127.
 
 ## Join us
 
-开发 QQ 群：649344857
+开发 QQ 群：864474742
