@@ -11,6 +11,7 @@
     "ThreadLuxcavationBattle":{
         "next": [
             "PartySelectBtn",
+            "PartyHelpBtn",
             "Sub_LvLSelBattleBtn",
             "Sub_ThreadBattleBtn",
             "Sub_ThreadLuxcavationBtn",
@@ -116,7 +117,8 @@
         ],
         "action": "Click",
         "next": [
-            "PartySelectBtn"
+            "PartySelectBtn",
+            "PartyHelpBtn"
         ]
     },
     "LuxcavationEnter": {
@@ -127,7 +129,8 @@
         ],
         "action": "Click",
         "next": [
-            "PartySelectBtn"
+            "PartySelectBtn",
+            "PartyHelpBtn"
         ]
     },
     "PartySelectBtn": {
@@ -141,6 +144,18 @@
             "BattleLoop"
         ]
     },
+    "PartyHelpBtn": {
+        "recognition": "TemplateMatch",
+        "template": "limbus_template/daily/PartyHelp.png",
+        "roi": [
+            0, 0, 264, 163
+        ],
+        "action": "Click",
+        "target": [65, 28, 63, 35],
+        "next": [
+            "PartySelectBtn"
+        ]
+    },
     "BattleLoop": {
         "next": [
             "BattleStart",
@@ -151,7 +166,7 @@
             "AbnormalEventSkip",
             "EndBattleConfirm"
         ],
-        "timeout": 60000
+        "timeout": 80000
     },
     "WinRateAuto": {
         "pre_wait_freezes": 1500,
@@ -243,10 +258,11 @@
     {
         "pre_wait_freezes": 1500,
         "recognition": "TemplateMatch",
-        "template": "limbus_template/daily/Confirm.png",
-        "roi": [
-            1015,511,265,150
-        ],
+        "template": [
+            "limbus_template/daily/Confirm.png",
+            "limbus_template/daily/Confirm2.png"],
+        "roi": [[1015,511,265,150],
+                [968, 472, 160, 181]],
         "action": "Click"
     }
 

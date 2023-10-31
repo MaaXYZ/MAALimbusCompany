@@ -80,10 +80,10 @@
         "is_sub": true,
         "pre_wait_freezes": 500,
         "recognition": "TemplateMatch",
-        "template": "limbus_template/daily/Confirm.png",
-        "roi": [
-            1015,511,265,150
-        ],
+        "template": ["limbus_template/daily/Confirm.png",
+                     "limbus_template/daily/Confirm2.png"],
+        "roi": [[1015,511,265,150],
+        [968, 472, 160, 181]],
         "action": "Click"
     },
     "Sub_BattleSetting":
