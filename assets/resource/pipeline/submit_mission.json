@@ -2,39 +2,59 @@
     "SubmitMission":{
         "pre_wait_freezes": 1500,
         "next": [
+            "NoMission",
+            "Sub_MainMenuNotice",
             "Sub_MissionClick",
             "Sub_MissionNotice",
-            "Sub_MainMenuNotice",
+            "Sub_NoMissionNotice",
             "Sub_Limbus_Startup"
         ]
+    },
+    "NoMission": {
+        "recognition": "TemplateMatch",
+        "threshold": 0.8,
+        "template": "limbus_template/daily/seasonpass3Complete.png",
+        "roi": [
+            1130, 118, 150, 152
+        ],
+        "action": "DoNothing"
     },
     "Sub_MainMenuNotice": {
         "is_sub": true,
         "recognition": "TemplateMatch",
         "threshold": 0.8,
-        "template": "limbus_template/daily/MainNotice.png",
+        "template": "limbus_template/daily/seasonpass3.png",
         "roi": [
-            871, 112, 409, 239
+            1107, 119, 170, 150
         ],
-        "target": [1139,133,122,105],
+        "target_offset": [-50, 50, 0, 0],
         "action": "Click"
     },
     "Sub_MissionNotice": {
         "is_sub": true,
         "recognition": "TemplateMatch",
         "threshold": 0.85,
-        "template": "limbus_template/daily/MissionNoticeFull.png",
+        "template": "limbus_template/daily/MissionNotice.png",
         "roi": [
             272, 0, 228, 154
         ],
         "target": [274,0,220,123],
         "action": "Click"
     },
+    "Sub_NoMissionNotice": {
+        "recognition": "TemplateMatch",
+        "threshold": 0.85,
+        "template": "limbus_template/daily/MissionNotice.png",
+        "roi": [
+            383, 0, 130, 125
+        ],
+        "action": "DoNothing"
+    },
     "Sub_MissionClick": {
         "recognition": "TemplateMatch",
-        "template": "limbus_template/daily/MissionClickFull.png",
+        "template": "limbus_template/daily/MissionNotice2.png",
         "roi": [
-            274, 129, 487, 557
+            258, 132, 505, 549
         ],
         "target_offset": [-150, 20, 0, 0],
         "action": "Click",

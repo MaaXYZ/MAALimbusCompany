@@ -3,8 +3,17 @@
         "pre_wait_freezes": 1500,
         "next": [
             "EnoughPt",
+            "NoEnoughPt",
             "Sub_Limbus_Startup"
         ]
+    },
+    "NoEnoughPt": {
+        "recognition": "TemplateMatch",
+        "template": "limbus_template/daily/NoEnergy.png",
+        "roi": [
+            292, 607, 61, 113
+        ],
+        "action": "DoNothing"
     },
     "EnoughPt": {
         "recognition": "TemplateMatch",
@@ -16,7 +25,8 @@
         "action": "Click",
         "next": [
             "SelectAll",
-            "EnoughPt"
+            "ConfirmCraft",
+            "CancelCraft"
         ]
     },
     "SelectAll": {
@@ -27,7 +37,8 @@
         ],
         "action": "Click",
         "next": [
-            "ConfirmCraft"
+            "ConfirmCraft",
+            "CancelCraft"
         ]
     },
     "ConfirmCraft": {
@@ -35,6 +46,14 @@
         "template": "limbus_template/daily/ConfirmCraft.png",
         "roi": [
             600,462,188,149
+        ],
+        "action": "Click"
+    },
+    "CancelCraft": {
+        "recognition": "TemplateMatch",
+        "template": "limbus_template/daily/CancelCraft.png",
+        "roi": [
+            424, 465, 124, 136
         ],
         "action": "Click"
     }

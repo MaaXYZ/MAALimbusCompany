@@ -12,6 +12,7 @@
         "next": [
             "PartySelectBtn",
             "PartyHelpBtn",
+            "Sub_DiffSelect",
             "Sub_LvLSelBattleBtn",
             "Sub_ThreadBattleBtn",
             "Sub_ThreadLuxcavationBtn",
@@ -25,6 +26,7 @@
             "EndBattleConfirm",
             "Sub_SkipConfirmBtn",
             "Sub_SkipBtn",
+            "Sub_DiffSelect",
             "Sub_LvLSelSkipBtn",
             "Sub_ThreadLuxcavationBtn",
             "Sub_LuxcavationBtn",
@@ -52,10 +54,22 @@
     },
     "Sub_ThreadLuxcavationBtn": {
         "is_sub": true,
+        "threshold": 0.92,
         "recognition": "TemplateMatch",
         "template": "limbus_template/daily/Thread.png",
         "roi": [
             31,258,228,146
+        ],
+        "action": "Click"
+    },
+    "Sub_DiffSelect": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "limbus_template/daily/DiffSelect.png",
+        "roi": [
+            [736, 314, 143, 142],
+            [774, 415, 104, 109],
+            [771, 225, 102, 80]
         ],
         "action": "Click"
     },
@@ -67,7 +81,8 @@
         "roi": [
             255,445,228,123
         ],
-        "action": "Click"
+        "action": "Click",
+        "post_wait_freezes": 2000
     },
     "Sub_ThreadBattleBtn": {
         "is_sub": true,
@@ -77,7 +92,8 @@
         "roi": [
             240,405,173,131
         ],
-        "action": "Click"
+        "action": "Click",
+        "post_wait_freezes": 2000
     },
     "Sub_SkipConfirmBtn": {
         "is_sub": true,
@@ -171,7 +187,7 @@
     "WinRateAuto": {
         "pre_wait_freezes": 1500,
         "recognition": "TemplateMatch",
-        "template": "limbus_template/daily/WinRate.png",
+        "template": "limbus_template/daily/WinRate2.png",
         "roi": [
             [852,482,171,125],
             [892,482,171,125],
@@ -179,7 +195,8 @@
             [967,481,171,127],
             [1006,480,171,125],
             [1046,480,171,125],
-            [1086,480,171,125]
+            [1086,480,171,125],
+            [55, 496, 1183, 128]
         ],
         "action": "Click",
         "next": [
@@ -199,7 +216,8 @@
             [935,491,137,131],
             [975,491,137,131],
             [1015,491,137,131],
-            [1055,491,137,131]
+            [1055,491,137,131],
+            [55, 496, 1183, 128]
         ],
         "action": "Click",
         "next": [
