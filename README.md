@@ -29,9 +29,16 @@
 MAA1999_CLI.exe "H:\Program Files\Netease\MuMuPlayer-12.0\shell\.\adb.exe" "127.0.0.1:16640" ThreadLuxcavationBattle ExpLuxcavation CraftModule
 ```
 
+## 图形化界面
+
+目前暂无正式版 GUI，但有以下由社区大佬们贡献的 GUI 项目，欢迎使用！
+
+- [MAA1999WPF](https://github.com/MLAcookie/MAA1999WPF) 拿WPF框架写的一个MAA199的UI
+- [MaaY](https://github.com/MaaAssistantArknights/MaaY) 为MaaFramework重新设计的通用界面
+
 ## How to build
 
-**如果你要编译源码才看这节，否则直接 [下载](https://github.com/MaaAssistantArknights/MAA1999/releases) 即可**
+**如果你要编译源码才看这节，否则直接 [下载](https://github.com/MaaAssistantArknights/M9A/releases) 即可**
 
 1. 下载 MaaFramework 的 [Release 包](https://github.com/MaaAssistantArknights/MaaFramework/releases)，解压到 `deps` 文件夹中
 2. 配置 cmake

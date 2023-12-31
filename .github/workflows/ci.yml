@@ -78,8 +78,8 @@ jobs:
         uses: robinraju/release-downloader@v1.8
         with:
           repository: MaaAssistantArknights/MaaFramework
-          latest: true
           fileName: "MAA-win-${{ matrix.arch }}*"
+          latest: true
           out-file-path: "deps"
           extract: true
 
@@ -143,8 +143,8 @@ jobs:
         uses: robinraju/release-downloader@v1.8
         with:
           repository: MaaAssistantArknights/MaaFramework
-          latest: true
           fileName: "MAA-linux-${{ matrix.arch }}*"
+          latest: true
           out-file-path: "deps"
           extract: true
 
@@ -165,7 +165,7 @@ jobs:
 
       - uses: actions/upload-artifact@v3
         with:
-          name: MAA1999-linux-${{ matrix.arch }}
+          name: M9A-linux-${{ matrix.arch }}
           path: "install"
 
   macos:
@@ -199,8 +199,8 @@ jobs:
         uses: robinraju/release-downloader@v1.8
         with:
           repository: MaaAssistantArknights/MaaFramework
-          latest: true
           fileName: "MAA-macos-${{ matrix.arch }}*"
+          latest: true
           out-file-path: "deps"
           extract: true
 
@@ -222,7 +222,7 @@ jobs:
 
       - uses: actions/upload-artifact@v3
         with:
-          name: MAA1999-macos-${{ matrix.arch }}
+          name: M9A-macos-${{ matrix.arch }}
           path: "install"
 
   release:

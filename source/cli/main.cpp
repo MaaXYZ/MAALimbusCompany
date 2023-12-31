@@ -25,7 +25,6 @@ bool proc_argv(int argc, char** argv, bool& debug, std::string& adb, std::string
 bool app_package_and_activity(int client_type, std::string& package, std::string& activity);
 void save_config(const std::string& adb, const std::string& adb_address, int& client_type, const TaskList& tasks,
                  MaaAdbControllerType ctrl_type);
-std::string read_adb_config(const std::filesystem::path& cur_dir);
 void mpause();
 
 int main(int argc, char** argv)
@@ -63,7 +62,7 @@ int main(int argc, char** argv)
     std::string debug_dir = (cur_dir / "debug").string();
     std::string resource_dir = (cur_dir / "resource").string();
     std::string agent_path = (cur_dir / "MaaAgentBinary").string();
-    std::string adb_config = read_adb_config(cur_dir);
+    std::string adb_config = json::object().to_string();
 
     MaaToolKitInit();
 
@@ -149,9 +148,9 @@ json::value combat_param(int index)
     auto& eat_candy_within_24h_doc = diff["EatCandyWithin24H"]["doc"];
 
     all_in = false;
-    all_in_doc = "刷活性；默认false";
+    all_in_doc = "刷完全部活性（体力）；默认false";
     eat_candy_within_24h = false;
-    eat_candy_within_24h_doc = "无限吃24小时内过期的糖；默认false，前置条件：开启刷活性";
+    eat_candy_within_24h_doc = "无限吃24小时内过期的糖；默认false，前置条件：开启刷完全部活性";
 
     switch (index) {
     case 5:
@@ -270,6 +269,14 @@ json::value combat_param(int index)
         chapter = "dummyThePrisonerintheCave";
         stage = "dummy证明启示V";
         difficulty = "dummyStageDifficulty_None";
+        times = "1";
+        break;
+
+    case 21:
+        //"21. 活动：复兴乌卢鲁运动会 13 艰难\n"
+        chapter = "RevivalTheUluruGames";
+        stage = "13";
+        difficulty = "ActivityStageDifficulty";
         times = "1";
         break;
     }
@@ -411,6 +418,11 @@ bool proc_argv(int argc, char** argv, bool& debug, std::string& adb, std::string
                 task_obj.param = combat_param(id);
                 break;
 
+            case 21:
+                task_obj.type = "RevivalTheUluruGames";
+                task_obj.param = combat_param(id);
+                break;
+
             default:
                 std::cout << "Unknown task: " << id << std::endl;
                 return false;
@@ -480,19 +492,6 @@ void save_config(const std::string& adb, const std::string& adb_address, int& cl
     std::ofstream ofs("config.json", std::ios::out);
     ofs << config;
     ofs.close();
-}
-
-std::string read_adb_config(const std::filesystem::path& cur_dir)
-{
-    std::ifstream ifs(cur_dir / "resource" / "controller_config.json", std::ios::in);
-    if (!ifs.is_open()) {
-        std::cout << "Can't open controller_config.json" << std::endl;
-        exit(1);
-    }
-
-    std::stringstream buffer;
-    buffer << ifs.rdbuf();
-    return buffer.str();
 }
 
 void mpause()

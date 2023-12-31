@@ -2,7 +2,7 @@
     "Awards": {
         "next": [
             "Sub_MailBadge",
-            "Sub_JukeboxBadge_MysteryBoxCarnival",
+            "Sub_JukeboxBadge",
             "Sub_DailyBadge",
             "HomeFlag",
             "Sub_ObtainedAwards",
@@ -214,7 +214,8 @@
         "next": [
             "Sub_CollectJukeboxAwards",
             "Sub_ObtainedJukeboxAwards",
-            "NoJukeboxAwards"
+            "NoJukeboxAwards",
+            "Sub_JukeboxAwardsBadge"
         ]
     },
     "Sub_CollectJukeboxAwards": {
