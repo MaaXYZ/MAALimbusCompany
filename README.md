@@ -18,6 +18,7 @@
   最基本的了，没啥好说的。目前已支持 自动经验/线本。
   对应的任务是： `ExpLuxcavation` 和 `ThreadLuxcavationSkip` `ThreadLuxcavationBattle`。日常合成模块的任务是 `CraftModule`。 `SubmitMission` 可以收取当前通行证下已完成的每日任务。
   对应最新活动的 11 12 关的任务是：`Mission_4_5_11` `Mission_4_5_12` （活动已结束，不建议再使用）
+- 对应 Miracle District 活动的任务是： `Mission_5_5_13`
 - [ ] 自动选人
   。。。
 - [ ] 自动镜牢  
@@ -26,7 +27,7 @@
 ## TL;DR
 带参数启动可执行文件启动相关任务，如：
 ```
-MAA1999_CLI.exe "H:\Program Files\Netease\MuMuPlayer-12.0\shell\.\adb.exe" "127.0.0.1:16640" ThreadLuxcavationBattle ExpLuxcavation CraftModule
+MAALimbus_CLI.exe "H:\Program Files\Netease\MuMuPlayer-12.0\shell\.\adb.exe" "127.0.0.1:16640" ThreadLuxcavationBattle ExpLuxcavation CraftModule
 ```
 
 ## 图形化界面
