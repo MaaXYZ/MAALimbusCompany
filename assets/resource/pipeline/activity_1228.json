@@ -1,0 +1,121 @@
+{
+    "Mission_5_5_13":{
+        "pre_wait_freezes": 500,
+        "next": [
+            "EnterStageMiracle",
+            "Sub_Miracle_13",
+            "Sub_Miracle_SelectView",
+            "SkipStory_Confirm",
+            "SkipStory_SecondStep",
+            "SkipStory_FirstStep",
+            "Sub_Miracle_StageSelect",
+            "Sub_Enter_Miracle",
+            "Sub_DriveView",
+            "Sub_Limbus_Startup"
+        ]
+    },
+    "Mission_5_5_11":{
+        "pre_wait_freezes": 500,
+        "next": [
+            "EnterStageMiracle",
+            "Sub_Miracle_11",
+            "Sub_Miracle_SelectView",
+            "SkipStory_Confirm",
+            "SkipStory_SecondStep",
+            "SkipStory_FirstStep",
+            "Sub_Miracle_StageSelect",
+            "Sub_Enter_Miracle",
+            "Sub_DriveView",
+            "Sub_Limbus_Startup"
+        ]
+    },
+    "SkipStory_Confirm": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "limbus_template/Miracle/StoryConfirm.png",
+        "roi": [
+            598, 413, 190, 153
+        ],
+        "action": "Click"
+    },
+    "SkipStory_SecondStep": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "limbus_template/Miracle/StorySkip.png",
+        "roi": [
+            792,0,163,163
+        ],
+        "action": "Click"
+    },
+    "SkipStory_FirstStep": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "limbus_template/Miracle/Story1.png",
+        "roi": [
+            1119, 0, 150, 141
+        ],
+        "target": [65, 28, 63, 35],
+        "action": "Click"
+    },
+    "EnterStageMiracle": {
+        "recognition": "TemplateMatch",
+        "template": "limbus_template/Miracle/EnterStage.png",
+        "roi": [
+            984, 487, 141, 146
+        ],
+        "action": "Click",
+        "next": [
+            "PartySelectBtn"
+        ]
+    },
+    "Sub_Miracle_13": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "limbus_template/Miracle/13.png",
+        "roi": [
+            14, 74, 1246, 517
+        ],
+        "action": "Click"
+    },
+    "Sub_Miracle_11": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "limbus_template/Miracle/11.png",
+        "roi": [
+            14, 74, 1246, 517
+        ],
+        "action": "Click"
+    },
+    "Sub_Miracle_SelectView": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "limbus_template/Miracle/SelectView.png",
+        "roi": [
+            1119,0,161,151
+        ],
+        "action": "Swipe",
+        "begin":[ 550, 547, 300, 51],
+        "end":[ 150, 547, 300, 51]
+
+    },
+    "Sub_Miracle_StageSelect": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "limbus_template/Miracle/StageSelect.png",
+        "roi": [
+            29,120,293,239
+        ],
+        "action": "Click"
+    },
+    "Sub_Enter_Miracle": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": ["limbus_template/Miracle/MiracleIntro.png", "limbus_template/Miracle/MiracleIntroLofi.png"],
+        "roi": [
+            28,89,306,201
+        ],
+        "action": "Click",
+        "post_wait_freezes": 9000
+    }
+
+}
