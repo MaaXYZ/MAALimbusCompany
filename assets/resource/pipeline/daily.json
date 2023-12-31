@@ -187,7 +187,7 @@
     "WinRateAuto": {
         "pre_wait_freezes": 1500,
         "recognition": "TemplateMatch",
-        "template": "limbus_template/daily/WinRate2.png",
+        "template": ["limbus_template/daily/WinRate2.png", "limbus_template/daily/WinRate3.png"],
         "roi": [
             [852,482,171,125],
             [892,482,171,125],
@@ -207,7 +207,7 @@
     {
         "pre_wait_freezes": 1500,
         "recognition": "TemplateMatch",
-        "template": "limbus_template/daily/BStart2.png",
+        "template": ["limbus_template/daily/BStart2.png", "limbus_template/daily/BStart3.png"],
         "roi": [
             [775,491,137,131],
             [815,491,137,131],
