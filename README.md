@@ -3,6 +3,8 @@
 基于全新架构的 亿韭韭韭（LimbusCompany） 小助手。图像技术 + 模拟控制，解放双手！  
 由 [MaaFramework](https://github.com/MaaAssistantArknights/MaaFramework) / [MaaCommon](https://github.com/MaaAssistantArknights/MaaCommon) 强力驱动！
 
+在使用 MAALimbusCompany 时，建议将模拟器分辨率配置为 `1280x720`，且 LimbusCompany 游戏本体的 `Render Scaling` 选项配置到 `Medium` 以上，语言配置为 `English`
+
 ## 与其他项目的区别
 
 由于采用 MAA 框架进行开发，这个自动化工具主要支持的目标为 Android 设备/模拟器，并不支持PC端（Steam）游戏的自动化，如果您需要相关的工具，可以前往下面的项目：
