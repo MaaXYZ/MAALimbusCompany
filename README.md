@@ -29,47 +29,50 @@
 ```
 MAALimbus_CLI.exe "H:\Program Files\Netease\MuMuPlayer-12.0\shell\.\adb.exe" "127.0.0.1:16640" ThreadLuxcavationBattle ExpLuxcavation CraftModule
 ```
+## 下载说明
+
+下载地址：<https://github.com/hxdnshx/MAALimbusCompany/releases>
+
+### Windows
+
+- 对于绝大部分用户，请下载 `MAALimbusCompany-win-x86_64-vXXX.zip`
+- 若确定自己的电脑是 arm 架构，请下载 `MAALimbusCompany-win-aarch64-vXXX.zip`
+- 解压后运行 `MAALimbus_CLI.exe` 即可
+
+### Linux
+
+~~用 Linux 的大佬应该不需要我教~~
 
 ## 图形化界面
 
 目前暂无正式版 GUI，但有以下由社区大佬们贡献的 GUI 项目，欢迎使用！
 
-- [MAA1999WPF](https://github.com/MLAcookie/MAA1999WPF) 拿WPF框架写的一个MAA199的UI
-- [MaaY](https://github.com/MaaAssistantArknights/MaaY) 为MaaFramework重新设计的通用界面
+- [MAA1999WPF](https://github.com/MLAcookie/MAA1999WPF) 拿WPF框架写的一个MAA199的UI（应该能导入吧）
 
 ## How to build
 
-**如果你要编译源码才看这节，否则直接 [下载](https://github.com/MaaAssistantArknights/M9A/releases) 即可**
+**如果你要编译源码才看这节，否则直接 [下载](https://github.com/hxdnshx/MAALimbusCompany/releases) 即可**
+
+0. 完整克隆本项目及子项目
+
+    ```bash
+    git clone --recursive https://github.com/hxdnshx/MAALimbusCompany.git
+    ```
 
 1. 下载 MaaFramework 的 [Release 包](https://github.com/MaaAssistantArknights/MaaFramework/releases)，解压到 `deps` 文件夹中
-2. 配置 cmake
+2. 安装
 
-    - Windows  
-
-    ```bash
-    cmake --preset "MSVC 2022"
+    ```python
+    python ./install.py
     ```
 
-    - Linux / macOS
-
-    ```bash
-    cmake --preset "NinjaMulti"
-    ```
-
-3. 使用 cmake 构建工程  
-
-    ```bash
-    cmake --build build --config Release
-    cmake --install build --prefix install
-    ```
-
-    生成的二进制及相关资源文件在 `install` 目录下
+生成的二进制及相关资源文件在 `install` 目录下
 
 ## 开发相关
 
-- `tools/ImageCropper` 可以用来裁剪图片和获取 ROI
-- Pipeline 协议请参考 [MaaFramework 的文档](https://github.com/MaaAssistantArknights/MaaFramework/blob/main/docs/zh_cn/3.1-%E4%BB%BB%E5%8A%A1%E6%B5%81%E6%B0%B4%E7%BA%BF%E5%8D%8F%E8%AE%AE.md)
+- [MaaFramework 快速开始](https://github.com/MaaAssistantArknights/MaaFramework/blob/main/docs/zh_cn/1.1-%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B.md)
 
 ## Join us
 
-开发 QQ 群：864474742
+- 开发 QQ 群：864474742
+- MaaFramework 开发交流 QQ 群: 595990173
