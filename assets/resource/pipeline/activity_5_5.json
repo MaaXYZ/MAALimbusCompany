@@ -1,0 +1,105 @@
+{
+    "Mission_5_5_22":{
+        "pre_wait_freezes": 500,
+        "next": [
+            "EnterStageSword",
+            "Sub_Sword_22",
+            "Sub_Sword_SelectView",
+            "SkipStory_Confirm",
+            "SkipStory_SecondStep",
+            "SkipStory_FirstStep",
+            "Sub_Sword_StageSelect",
+            "Sub_Enter_Sword",
+            "Sub_DriveView",
+            "Sub_Limbus_Startup"
+        ]
+    },
+    "Mission_5_5_23":{
+        "pre_wait_freezes": 500,
+        "next": [
+            "EnterStageSword",
+            "Sub_Sword_23",
+            "Sub_Sword_SelectView",
+            "SkipStory_Confirm",
+            "SkipStory_SecondStep",
+            "SkipStory_FirstStep",
+            "Sub_Sword_StageSelect",
+            "Sub_Enter_Sword",
+            "Sub_DriveView",
+            "Sub_Limbus_Startup"
+        ]
+    },
+    "EnterStageSword": {
+        "recognition": "TemplateMatch",
+        "template": "limbus_template/Miracle/EnterStage.png",
+        "roi": [
+            984, 487, 141, 146
+        ],
+        "action": "Click",
+        "next": [
+            "PartySelectBtn"
+        ]
+    },
+    "Sub_Sword_23": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": ["limbus_template/Sword/23.png", "limbus_template/Sword/23_2.png", "limbus_template/Sword/23_3.png"],
+        "roi": [
+            404,205,506,472
+        ],
+        "action": "Click"
+    },
+    "Sub_Sword_22": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": ["limbus_template/Sword/22.png"],
+        "roi": [
+            148, 250, 362, 371
+        ],
+        "action": "Click"
+    },
+
+    "Sub_Sword_23": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": ["limbus_template/Sword/23.png", "limbus_template/Sword/23_2.png", "limbus_template/Sword/23_3.png"],
+        "roi": [
+            404,205,506,472
+        ],
+        "action": "Click"
+    },
+    "Sub_Sword_SelectView": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "threshold": 0.60,
+        "template": "limbus_template/Sword/SelectView.png",
+        "roi": [
+            1119,0,161,153
+        ],
+        "action": "Swipe",
+        "begin":[ 550, 547, 300, 51],
+        "end":[ 150, 747, 300, 51]
+
+    },
+    "Sub_Sword_StageSelect": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "limbus_template/Sword/StageSelect.png",
+        "roi": [
+            848,299,296,155
+        ],
+        "action": "Click",
+        "post_wait_freezes": 3000
+    },
+    "Sub_Enter_Sword": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": ["limbus_template/Sword/SwordIntro.png", "limbus_template/Sword/SwordIntroLofi.png"],
+        "roi": [
+            37,80,296,218
+        ],
+        "action": "Click",
+        "post_wait_freezes": 6000
+    }
+
+}

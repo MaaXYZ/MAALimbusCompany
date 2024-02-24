@@ -115,7 +115,7 @@ jobs:
 
       - uses: actions/upload-artifact@v3
         with:
-          name: M9A-linux-${{ matrix.arch }}
+          name: MAALimbusCompany-linux-${{ matrix.arch }}
           path: "install"
 
   macos:
@@ -147,7 +147,7 @@ jobs:
 
       - uses: actions/upload-artifact@v3
         with:
-          name: M9A-macos-${{ matrix.arch }}
+          name: MAALimbusCompany-macos-${{ matrix.arch }}
           path: "install"
 
   release:
