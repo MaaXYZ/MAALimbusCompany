@@ -54,6 +54,10 @@
         {
             "name": "活动：肉斩骨断-23关",
             "entry": "Mission_5_5_23"
+        },
+        {
+            "name": "活动：时间杀人时间-2关",
+            "entry": "Mission_6_5_2"
         }
     ],
     "recognizer": {},

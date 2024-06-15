@@ -1,0 +1,61 @@
+{
+    "Mission_6_5_2":{
+        "pre_wait_freezes": 500,
+        "next": [
+            "EnterStageSword",
+            "Sub_Time_2",
+            "Sub_Time_SelectView",
+            "SkipStory_Confirm",
+            "SkipStory_SecondStep",
+            "SkipStory_FirstStep",
+            "Sub_Time_StageSelect",
+            "Sub_Enter_Time",
+            "Sub_DriveView",
+            "Sub_Limbus_Startup"
+        ]
+    },
+
+    "Sub_Time_2": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": ["limbus_template/Time/6_5_2.png"],
+        "roi": [
+            0, 0, 1022, 688
+        ],
+        "action": "Click"
+    },
+    "Sub_Time_SelectView": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "threshold": 0.60,
+        "template": "limbus_template/Time/TimeItem.png",
+        "roi": [
+            1120,0,163,154
+        ],
+        "action": "Swipe",
+        "begin":[ 550, 547, 300, 51],
+        "end":[ 950, 407, 51, 51]
+
+    },
+    "Sub_Time_StageSelect": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "limbus_template/Time/StageSelect.png",
+        "roi": [
+            878,312,256,147
+        ],
+        "action": "Click",
+        "post_wait_freezes": 3000
+    },
+    "Sub_Enter_Time": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": ["limbus_template/Time/TimeIntro.png"],
+        "roi": [
+            37,80,296,218
+        ],
+        "action": "Click",
+        "post_wait_freezes": 6000
+    }
+
+}

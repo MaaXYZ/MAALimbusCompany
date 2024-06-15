@@ -58,16 +58,6 @@
         ],
         "action": "Click"
     },
-
-    "Sub_Sword_23": {
-        "is_sub": true,
-        "recognition": "TemplateMatch",
-        "template": ["limbus_template/Sword/23.png", "limbus_template/Sword/23_2.png", "limbus_template/Sword/23_3.png"],
-        "roi": [
-            404,205,506,472
-        ],
-        "action": "Click"
-    },
     "Sub_Sword_SelectView": {
         "is_sub": true,
         "recognition": "TemplateMatch",
