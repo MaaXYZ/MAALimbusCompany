@@ -19,7 +19,7 @@
 - [x] 自动收菜  
   最基本的了，没啥好说的。目前已支持 自动经验/线本。
   对应的任务是： `ExpLuxcavation` 和 `ThreadLuxcavationSkip` `ThreadLuxcavationBattle`。日常合成模块的任务是 `CraftModule`。 `SubmitMission` 可以收取当前通行证下已完成的每日任务。
-  对应最新活动的 11 12 关的任务是：`Mission_4_5_11` `Mission_4_5_12` （活动已结束，不建议再使用）
+  对应最新活动的 11 12 关的任务是：`Mission_4_5_11` `Mission_4_5_12` （活动已结束，不建议再使用） 对应 时间杀人时间的任务是 Mission_6_5_2
 - 对应 Miracle District 活动的任务是： `Mission_5_5_13`
 - [ ] 自动选人
   。。。
