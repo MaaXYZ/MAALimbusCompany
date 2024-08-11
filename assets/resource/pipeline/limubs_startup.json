@@ -82,7 +82,7 @@
         "recognition": "TemplateMatch",
         "template": ["limbus_template/daily/Confirm.png",
                      "limbus_template/daily/Confirm2.png"],
-        "roi": [[1015,511,265,150],
+        "roi": [[1015,511,265,180],
         [968, 472, 160, 181]],
         "action": "Click"
     },

@@ -58,6 +58,10 @@
         {
             "name": "活动：时间杀人时间-2关",
             "entry": "Mission_6_5_2"
+        },
+        {
+            "name": "活动：WRAP快车谋杀案-27关",
+            "entry": "Mission_6_5_27"
         }
     ],
     "recognizer": {},

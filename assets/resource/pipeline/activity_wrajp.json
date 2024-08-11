@@ -1,0 +1,71 @@
+{
+    "Mission_6_5_27":{
+        "pre_wait_freezes": 500,
+        "next": [
+            "EnterStageSword",
+            "TeamSelectFix",
+            "Sub_Wrap_2",
+            "Sub_Wrap_SelectView",
+            "SkipStory_Confirm",
+            "SkipStory_SecondStep",
+            "SkipStory_FirstStep",
+            "Sub_Wrap_StageSelect",
+            "Sub_Enter_Wrap",
+            "Sub_DriveView",
+            "Sub_Limbus_Startup"
+        ]
+    },
+    "TeamSelectFix": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": ["limbus_template/Wrap/TeamSelectFix.png"],
+        "roi": [
+            0,0,517,364
+        ],
+        "target": [48, 16, 83, 57],
+        "action": "Click"
+    },
+    "Sub_Wrap_2": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": ["limbus_template/Wrap/Stage6527.png"],
+        "roi": [
+            0,44,847,676
+        ],
+        "action": "Click"
+    },
+    "Sub_Wrap_SelectView": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "threshold": 0.60,
+        "template": "limbus_template/Wrap/WrapItem.png",
+        "roi": [
+            1131,0,149,173
+        ],
+        "action": "Swipe",
+        "begin":[ 550, 547, 300, 51],
+        "end":[ 250, 547, 300, 51]
+
+    },
+    "Sub_Wrap_StageSelect": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "limbus_template/Wrap/StageSelect.png",
+        "roi": [
+            802,319,365,157
+        ],
+        "action": "Click",
+        "post_wait_freezes": 3000
+    },
+    "Sub_Enter_Wrap": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": ["limbus_template/Wrap/WrapIntro.png"],
+        "roi": [
+            42,86,283,210
+        ],
+        "action": "Click",
+        "post_wait_freezes": 6000
+    }
+
+}
